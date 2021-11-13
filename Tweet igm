@@ -1,0 +1,116 @@
+Let's make a game!
+	name:Twitter Clicker
+	by:Kaydead
+	desc:The average twitter user<//>Click your way to have the most followers<.><//>
+​
+created:11/12/2021
+	updated:11/12/2021
+	version:1
+ 
+Settings
+ 
+	background:https://raw.githubusercontent.com/Kaydead/Tweet-Clicker/main/cool-background.png
+	building cost increase:110%
+	building cost refund:50%
+ 
+	stylesheet:stuff/bigBlue.css
+ 
+	no particles
+	no bulk particles
+	css filters on
+	number display full
+ 
+Layout
+	
+		use default
+​
+Buttons
+	*Tweets
+		name:TweetButton
+		desc:Send tweets. Probally something controverisal
+		on click:yield 1 TweetCoin
+		on click:anim icon wobble
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/twitter-icon-83.png
+ 		no text
+		class:bigButton
+		tooltip origin:bottom
+		tooltip class:red
+​
+Resources
+	*TweetCoin|TweetCoins
+		name:TweetCoin|TweetCoins
+		desc:Crypto gained from number of tweets
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/i01_207-2077663_bitcoin-logo-blue.png
+		class:noBackground
+		show earned
+​
+	*ViralTweet|ViralTweets
+		name:ViralTweet|ViralTweets
+		desc:A viral tweet. Must be cool your semi-semi-semi-semi twitter famous
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/twitter%20animated.gif
+		class:noBackground
+		show earned
+		hidden when 0
+​
+​
+Buildings
+	*TEMPLATE
+		on click:anim glow
+ 
+	*MemeGenerator|MemeGenerators
+		name:Meme Generator|Meme Generators
+		text:Meme Generators[?(MemeGenerator >= 0)|s|]
+		desc:Creats and sends memes to twitter<//><b>Effect:</b><.>Produces 1 TweetCoin per second.
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/1245392-middle.png
+		cost:100 TweetCoins
+		on tick:yield 1 TweetCoin
+		req:100 TweetCoins:earned
+​
+	*SpamBot|SpamBots
+		name:Spam Bot|Spam Bots
+		text:Spam Bot[?(SpamBot>= 0)|s|]
+		desc:Spams twitter with tweets rapidly.<//><b>Effect:</b><.>Produces 10 TweetCoin per second.
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/48px-Gnome-stock_person_bot.svg.png
+		cost:500 TweetCoins
+		on tick:yield 10 TweetCoins
+		req:600 TweetCoins:earned and (MemeGenerator>= 5)
+​
+	*PremSpamBot|PremSpamBots
+		name:PremiumSpamBot|PremiumSpamBots
+		text:PremiumSpamBot[?(PremiumSpamBot>= 0)|s|]
+		desc:Reply's to other tweets.<//><b>Effect:</b><.>Produces 50 TweetCoin per second.
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/i01_pngaaa.com-5754756.png
+		cost:500 TweetCoins
+		on tick:yield 50 TweetCoins
+		req:(SpamBot>= 10)
+​
+Upgrades
+	
+​
+Shinies
+	*ViralBird
+		on click:log Woop
+		movement:onLeft moveRight
+		frequency: 60
+		frequency variation:30
+		req:2000 TweetCoins:earned
+		icon:https://github.com/Kaydead/Tweet-Clicker/raw/main/twitter%20animated.gif
+		class:bigButton
+		on click:yield 1 ViralTweet
+​
+​
+	
+CSS
+#game
+  {
+    background:#002130;
+    background-size: cover;
+    font-family: DejaVu Sans Mono, monospace !important;
+    letter-spacing: 0px;
+ 
+    font-stretch: ultra-expanded
+ 
+   // font-family:Century Gothic,sans-serif;
+    //font-weight:100;
+    color:#93f8ff;
+  }
